@@ -7,23 +7,38 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #161515;
     color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
+    position: relative;
+    text-align: center;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .container {
-    background: #e9e9e9;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     padding: 40px;
     text-align: center;
     width: 90%;
+    position: relative;
+    z-index: 1;
+    margin: auto;
 }
 
 header .logo {
@@ -33,7 +48,7 @@ header .logo {
 }
 
 .content h1 {
-    color: #1caae2;
+    color: #7ac6e4;
     font-size: 2.5em;
     margin-bottom: 10px;
 }
@@ -51,7 +66,7 @@ header .logo {
 }
 
 .contact-info a {
-    color: #09816d;
+    color: #380bb3;
     text-decoration: none;
     font-weight: bold;
 }
@@ -64,29 +79,26 @@ footer {
     margin-top: 30px;
 }
 
-.social-media a {
-    margin: 0 10px;
-    display: inline-block;
-}
-
-.social-media img {
-    width: 24px;
-    height: 24px;
-}
-
 footer p {
     font-size: 0.9em;
-    color: #131212;
+    color: #777;
     margin-top: 10px;
 }
 
 @media (max-width: 600px) {
+    .container {
+        width: 80%;
+        padding: 20px;
+    }
+
     .content h1 {
         font-size: 2em;
     }
+
     .content h2 {
         font-size: 1.2em;
     }
+
     .content p {
         font-size: 0.9em;
     }
