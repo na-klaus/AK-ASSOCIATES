@@ -4,6 +4,11 @@
       "source": "/(.*)",
       "destination": "https://www.ak-associates.in/$1",
       "permanent": true
+    },
+    {
+      "source": "/",
+      "destination": "https://www.ak-associates.in",
+      "permanent": true
     }
   ]
 }
