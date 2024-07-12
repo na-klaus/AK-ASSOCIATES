@@ -7,8 +7,21 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body style="background: url('bg.jpg') no-repeat center center fixed; background-size: cover;">
+<body>
     <div class="overlay"></div>
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><video src="video1.mp4" muted loop playsinline></video></div>
+            <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
+            <div class="slide"><video src="video3.mp4" muted loop playsinline></video></div>
+            <div class="slide"><video src="video2.mp4" muted loop playsinline></video></div>
+            <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="image4.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="image5.jpg" alt="Image 5"></div>
+        </div>
+    </div>
+    
     <div class="container">
         <header>
             <img src="logo-placeholder.png" alt="AK and Associates Logo" class="logo">
@@ -25,5 +38,32 @@
             <p>&copy; 2024 AK and Associates. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const videoElements = document.querySelectorAll('video');
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.style.opacity = index === currentIndex ? '1' : '0';
+                slide.style.pointerEvents = index === currentIndex ? 'auto' : 'none';
+            });
+
+            // Play video if it is currently displayed
+            videoElements.forEach((video, index) => {
+                if (index === currentIndex) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+
+            currentIndex = (currentIndex + 1) % slides.length;
+        }
+
+        setInterval(showSlides, 5000); // Change slide every 5 seconds
+        showSlides(); // Show the first slide immediately
+    </script>
 </body>
 </html>

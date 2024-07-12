@@ -8,15 +8,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
     position: relative;
-    text-align: center;
-    background: url('bg.jpg') no-repeat center center fixed;
-    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .overlay {
@@ -26,42 +20,77 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.slider {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.slide img, .slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7); /* Adjusted transparency */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    padding: 40px;
-    text-align: center;
     width: 90%;
-    position: relative;
-    z-index: 1;
-    margin: auto;
+    max-width: 400px;
+    padding: 20px;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 header .logo {
-    max-width: 150px;
-    margin: 0 auto 20px;
-    display: block;
+    max-width: 120px;
+    margin-bottom: 20px;
 }
 
 .content h1 {
     color: #7ac6e4;
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: 10px;
 }
 
 .content h2 {
     color: #555;
-    font-size: 1.5em;
+    font-size: 1.4em;
     margin-bottom: 20px;
 }
 
 .content p {
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 1em;
+    line-height: 1.4;
     margin-bottom: 20px;
 }
 
@@ -85,14 +114,37 @@ footer p {
     margin-top: 10px;
 }
 
-@media (max-width: 600px) {
+/* Responsive styles */
+@media (max-width: 768px) {
     .container {
         width: 80%;
-        padding: 20px;
+        padding: 15px;
     }
 
     .content h1 {
-        font-size: 2em;
+        font-size: 1.8em;
+    }
+
+    .content h2 {
+        font-size: 1.3em;
+    }
+
+    .content p {
+        font-size: 0.9em;
+    }
+
+    header .logo {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .content h1 {
+        font-size: 1.6em;
     }
 
     .content h2 {
@@ -100,6 +152,10 @@ footer p {
     }
 
     .content p {
-        font-size: 0.9em;
+        font-size: 0.8em;
+    }
+
+    header .logo {
+        max-width: 80px;
     }
 }
